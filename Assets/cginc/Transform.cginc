@@ -73,7 +73,7 @@ float4 trs(float3 p, float3 translate, float4 quaternion, float3 scale) {
 	return trs(float4(p, 1.0), translate, quaternion, scale);
 }
 float4 translate(float4 p, float3 t) {
-	return float4(p + t, p.w);
+	return float4((float3)p + t, p.w);
 }
 float4 translate(float3 p, float3 t) {
 	return translate(float4(p, 1.0f), t);
@@ -91,7 +91,7 @@ float4 rotate(float3 p, float4 quaternion) {
 	return rotate(float4(p, 1.0), quaternion);
 }
 float4 scale(float4 p, float3 s) {
-	return float4(p * s, p.w);
+	return float4((float3)p * s, p.w);
 }
 float4 scale(float3 p, float3 s) {
 	return scale(float4(p, 1.0f), s);
