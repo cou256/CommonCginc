@@ -23,11 +23,10 @@
 		float _H, _S, _V;
 
 		void surf (Input IN, inout SurfaceOutputStandard o) {
-			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * float4(rgb(float3(_H, _S, _V)), 1.0);
-			o.Albedo = c.rgb;
+			o.Albedo = rgb(_H, _S, _V);
 			o.Metallic = _Metallic;
 			o.Smoothness = _Glossiness;
-			o.Alpha = c.a;
+			o.Alpha = 1.0;
 		}
 		ENDCG
 	}

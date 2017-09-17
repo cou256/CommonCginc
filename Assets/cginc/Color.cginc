@@ -16,35 +16,37 @@ float _min(float a, float b) {
 		return b;
 	}
 }
-float3 hsv (float3 rgb) {
-	float r = rgb.x;
-	float g = rgb.y;
-	float b = rgb.z;
-	
+float3 hsv (float r, float g, float b) {
 	float max = _max(r, _max(g, b));
 	float min = _min(r, _min(g, b));
-	float d = max - min;
 	if (max == 0){
 		return float3(0.0, 0.0, 0.0);
 	}
-	float s = d / max;
-	float h = 0.0;
-	if (min == b) {
-		h = (rgb.y - rgb.x) / d + 1.0;
-	}else
-	if (min == r) {
-		h = (rgb.z - rgb.y) / d + 3.0;
-	}else
-	if (min == g) {
-		h = (rgb.x - rgb.z) / d + 5.0;
+	float h = max - min;
+	if (h > 0.0f) {
+		if (max == r) {
+			h = (g - b) / h;
+			if (h < 0.0f) {
+				h += 6.0f;
+			}
+		}
+		else if (max == g) {
+			h = 2.0f + (b - r) / h;
+		}
+		else {
+			h = 4.0f + (r - g) / h;
+		}
 	}
 	h /= 6.0;
-	return float3(h, s, max);
+	float s = (max - min);
+	if (max != 0.0f)
+	{
+		s /= max;
+	}
+	float v = max;
+	return float3(h, s, v);
 }
-float3 rgb (float3 hsv) {
-	float h = hsv.x;
-	float s = hsv.y;
-	float v = hsv.z;
+float3 rgb (float h, float s, float v) {
 	float r, g, b;
 	r = g = b = v;
 	if (v== 0.0) {
@@ -52,34 +54,30 @@ float3 rgb (float3 hsv) {
 	}
 	h *= 6.0f;
 	float i = trunc(h);
-	float f = h - i;
-	float _a = 1.0 - s;
-	float _b = 1.0 - f;
-	float _c = _a * _b;
-	float _d = _a * f;
-	if (i == 0.0) {
-		g *= _c;
-		b *= _a;
+	float f = frac(h);
+	if (i == 0) {
+		g *= 1 - s * (1 - f);
+		b *= 1 - s;
 	} else
-	if (i == 1.0) {
-		r *= _d;
-		b *= _a;
+	if (i == 1) {
+		r *= 1 - s * f;
+		b *= 1 - s;
 	} else
-	if (i == 2.0) {
-		r *= _a;
-		b *= _c;
+	if (i == 2) {
+		r *= 1 - s;
+		b *= 1 - s * (1 - f);
 	} else
-	if (i == 3.0) {
-		r *= _a;
-		g *= _d;
+	if (i == 3) {
+		r *= 1 - s;
+		g *= 1 - s * f;
 	} else
-	if (i == 4.0) {
-		r *= _c;
-		g *= _a;
+	if (i == 4) {
+		r *= 1 - s * (1 - f);
+		g *= 1 - s;
 	} else
-	if (i == 5.0) {
-		g *= _a;
-		b *= _d;
+	if (i == 5) {
+		g *= 1 - s;
+		b *= 1 - s * f;
 	}
 	return float3(r, g, b);
 }

@@ -24,12 +24,11 @@
 		half _Metallic;
 
 		void surf(Input IN, inout SurfaceOutputStandard o) {
-
-			fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
-			o.Albedo = rgb(hsv(c.rgb));
+			float3 h = hsv(_Color.r, _Color.g, _Color.b);
+			o.Albedo = rgb(h.x, h.y, h.z);
 			o.Metallic = _Metallic;
 			o.Smoothness = _Glossiness;
-			o.Alpha = c.a;
+			o.Alpha = 1.0;
 		}
 		ENDCG
 	}
