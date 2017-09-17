@@ -1,4 +1,4 @@
-﻿Shader "Test/TQSTest"
+﻿Shader "Test/Transform/TQSTest"
 {
 	Properties
 	{

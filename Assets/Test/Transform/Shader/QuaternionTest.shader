@@ -1,4 +1,4 @@
-﻿Shader "Test/QuaternionTest"
+﻿Shader "Test/Transform/QuaternionTest"
 {
 	Properties
 	{

@@ -1,4 +1,4 @@
-﻿Shader "Test/TranslateTest"
+﻿Shader "Test/Transform/TranslateTest"
 {
 	Properties
 	{

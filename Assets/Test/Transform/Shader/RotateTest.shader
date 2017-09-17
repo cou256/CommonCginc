@@ -1,4 +1,4 @@
-﻿Shader "Test/RotateTest"
+﻿Shader "Test/Transform/RotateTest"
 {
 	Properties
 	{

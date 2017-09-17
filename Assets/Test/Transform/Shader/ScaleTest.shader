@@ -1,4 +1,4 @@
-﻿Shader "Test/ScaleTest"
+﻿Shader "Test/Transform/ScaleTest"
 {
 	Properties
 	{
