@@ -151,10 +151,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0, g: 0, b: 0, a: 0}
-  hsvTest: {fileID: 4800000, guid: 195e91a009b4e144dbec6af4d8109fa3, type: 3}
-  rgbTest: {fileID: 4800000, guid: 28d5748a1a7441d478254f6a2900708b, type: 3}
-  hsv: {fileID: 0}
-  rgb: {fileID: 0}
+  toHsvTest: {fileID: 4800000, guid: 195e91a009b4e144dbec6af4d8109fa3, type: 3}
+  toRgbTest: {fileID: 4800000, guid: 28d5748a1a7441d478254f6a2900708b, type: 3}
+  hsv: {fileID: 1391432093}
+  rgb: {fileID: 1083646913}
 --- !u!1 &835711509
 GameObject:
   m_ObjectHideFlags: 0
