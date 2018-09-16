@@ -10,7 +10,7 @@
 		CGPROGRAM
 		#pragma surface surf Standard fullforwardshadows
 		#pragma target 3.0
-		#include "../cginc/Color.cginc"
+		#include "../../../Cginc/Color.cginc"
 		
 		sampler2D _MainTex;
 
