@@ -1,4 +1,8 @@
-﻿// Const
+﻿// MIT License
+// Copyright (c) 2017 Crimson_Apple
+// https://github.com/cou256/CommonCginc
+
+// Const
 const float4x4 m4x4identity = float4x4(
 	1.0, 0.0, 0.0, 0.0,
 	0.0, 1.0, 0.0, 0.0,
