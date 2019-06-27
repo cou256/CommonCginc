@@ -1,7 +1,7 @@
-// MIT License
-// Copyright (c) 2017 Crimson_Apple
-// https://github.com/cou256/CommonCginc
-
+/*
+The MIT License Copyright 2017 Crimson_Apple
+https://github.com/cou256/CommonCginc/blob/master/License
+*/
 /**
  * Reference
  * https://ja.wikipedia.org/wiki/HSV%E8%89%B2%E7%A9%BA%E9%96%93
