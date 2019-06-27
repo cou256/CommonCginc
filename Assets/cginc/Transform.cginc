@@ -1,6 +1,7 @@
-﻿// MIT License
-// Copyright (c) 2017 Crimson_Apple
-// https://github.com/cou256/CommonCginc
+/*
+The MIT License Copyright 2017 Crimson_Apple
+https://github.com/cou256/CommonCginc/blob/master/License
+*/
 
 // Const
 const float4x4 m4x4identity = float4x4(
