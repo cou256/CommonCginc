@@ -443,6 +443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 893489742}
+  shader: {fileID: 4800000, guid: 1e718b210996d4d12b9d9a2194230450, type: 3}
 --- !u!23 &745751229
 MeshRenderer:
   m_ObjectHideFlags: 0
