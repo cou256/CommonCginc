@@ -20,6 +20,12 @@ float4 qrot(float3 axis, float d) {
 	sincos(rad, s, c);
 	return float4(normalize(axis) * s, c);
 }
+// refs http://marupeke296.com/DXG_No58_RotQuaternionTrans.html
+float4 look_at(float3 position, float3 target)
+{
+    
+    return (float4) 0.0;
+}
 // Transform
 float4x4 translate_m(float3 translate) {
 	float4x4 m = m4x4identity;
