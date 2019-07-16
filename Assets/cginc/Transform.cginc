@@ -23,7 +23,10 @@ float4 qrot(float3 axis, float d) {
 // refs http://marupeke296.com/DXG_No58_RotQuaternionTrans.html
 float4 look_at(float3 position, float3 target)
 {
-    
+    float3 z = normalize(position - target);    
+    float3 x = normalize(corss(z, flaot3(0.0, 1.0, 0.0)));
+    float3 y = normalize(corss(z, x));
+
     return (float4) 0.0;
 }
 // Transform
