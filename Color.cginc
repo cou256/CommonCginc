@@ -1,11 +1,13 @@
-// MIT License
-// Copyright (c) 2017 Crimson_Apple
-// https://github.com/cou256/CommonCginc
-
 /**
- * Reference
- * https://ja.wikipedia.org/wiki/HSV%E8%89%B2%E7%A9%BA%E9%96%93
+ * Copyright (c) 2017 Kazuhito Yamada
+ * Released under the MIT license
+ * https://github.com/cou256/CommonCginc/blob/master/License
  */
+
+/*
+Reference
+https://ja.wikipedia.org/wiki/HSV%E8%89%B2%E7%A9%BA%E9%96%93
+*/
 float _max(float a, float b) {
 	if (a >= b) {
 		return a;
