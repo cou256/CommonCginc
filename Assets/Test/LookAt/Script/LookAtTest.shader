@@ -31,7 +31,7 @@
 			v2f vert (appdata_full v)
 			{
 				v2f o;
-                float4 lookat = look_at(_Position, _Target);
+                float4 lookat = look_at(_Position, _Target, float3(0.0, 1.0, 0.0));
 				o.vertex = UnityObjectToClipPos(rotate(v.vertex, lookat));
 				o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);
 				return o;

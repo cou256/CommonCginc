@@ -21,13 +21,70 @@ float4 qrot(float3 axis, float d) {
 	return float4(normalize(axis) * s, c);
 }
 // refs http://marupeke296.com/DXG_No58_RotQuaternionTrans.html
-float4 look_at(float3 position, float3 target)
+float4 look_at(float3 direction, float3 up)
 {
-    float3 z = normalize(position - target);
-	float3 x = normalize(cross(z, float3(0.0, 1.0, 0.0)));
+    float3 z = normalize(direction);
+	float3 x = normalize(cross(z, up));
 	float3 y = normalize(cross(z, x));
 
-    return (float4) 0.0;
+    float4x4 m = m4x4identity;
+    m[0][0] = x.x; m[0][1] = y.x; m[0][2] = z.x;
+    m[1][0] = x.y; m[1][1] = y.y; m[1][2] = z.y;
+    m[2][0] = x.z; m[2][1] = y.z; m[2][2] = z.z;
+
+    float e[4];
+    e[0] =  m[0][0] - m[1][1] - m[2][2] + 1.0f;
+    e[1] = -m[0][0] + m[1][1] - m[2][2] + 1.0f;
+    e[2] = -m[0][0] - m[1][1] + m[2][2] + 1.0f;
+    e[3] =  m[0][0] + m[1][1] + m[2][2] + 1.0f;
+
+    int bid = 0;
+    for(int i = 0; i < 4; i++)
+    {
+        if(e[i] > e[bid])
+        {
+            bid = i;
+        }
+    }
+    if(e[bid] < 0) return (float4)0.0;
+
+    float4 q = (float4) 0.0;
+    float v = sqrt(e[bid]) * 0.5f;
+    float mult = 0.25 / v;
+    if(bid == 0)
+    {
+        q.x = v;
+        q.y = (m[1][0] + m[0][1]) * mult;
+        q.z = (m[0][2] + m[2][0]) * mult;
+        q.w = (m[2][1] - m[1][2]) * mult;        
+    }else
+    if(bid == 1)
+    {
+        q.x = (m[1][0] + m[0][1]) * mult;
+        q.y = v;
+        q.z = (m[2][1] + m[1][2]) * mult;
+        q.w = (m[0][2] - m[2][0]) * mult;        
+    }else
+    if(bid == 2)
+    {
+        q.x = (m[0][2] + m[2][0]) * mult;
+        q.y = (m[2][1] + m[1][2]) * mult;
+        q.z = v;
+        q.w = (m[1][0] - m[0][1]) * mult;        
+    }else
+    if(bid == 3)
+    {
+        q.x = (m[2][1] + m[1][2]) * mult;
+        q.y = (m[0][2] + m[2][0]) * mult;
+        q.z = (m[1][0] - m[0][1]) * mult;
+        q.w = v;
+    }
+    return q;
+}
+float4 look_at(float3 position, float3 target, float3 up)
+{   
+    float3 direction = position - target;
+    return look_at(direction, up);
 }
 // Transform
 float4x4 translate_m(float3 translate) {
